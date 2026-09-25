@@ -1,0 +1,61 @@
+# Keil / ARM build outputs
+Objects/
+Listings/
+DebugConfig/
+Debug/
+Release/
+build/
+dist/
+*.axf
+*.bin
+*.hex
+*.elf
+*.map
+*.lst
+*.o
+*.obj
+*.d
+*.crf
+*.dep
+*.lnp
+*.htm
+*.html
+*.log
+*.uvguix.*
+*.uvoptx
+*.scvd
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Training artifacts and local datasets
+data/
+datasets/
+checkpoints/
+runs/
+wandb/
+*.pt
+*.pth
+*.ckpt
+
+# IDE and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.zip
+*.7z
+*.rar
+hs_err_pid*.log

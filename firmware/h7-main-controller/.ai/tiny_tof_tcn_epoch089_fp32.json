@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "architecture": "shared_cnn_two_layer_tcn",
+  "checkpoint": "/root/autodl-tmp/flexible_tentacle_act/runs/tcn_distill_teacher40_100ep_v3/best.pt",
+  "inputs": {
+    "tof_history": [
+      1,
+      13824
+    ],
+    "state_history": [
+      1,
+      12,
+      3
+    ]
+  },
+  "output": {
+    "action_q": [
+      1,
+      10,
+      3
+    ]
+  },
+  "action_unit": "0.01rad mechanical angle",
+  "normalization_embedded": true,
+  "opset": 16
+}

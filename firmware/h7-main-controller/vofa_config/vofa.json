@@ -1,0 +1,163 @@
+{
+  "type": "cmds",
+  "vnumber": 100,
+  "ctx": {
+    "name": "H7四触手控制",
+    "intro_on": true,
+    "intro": "UART7使用921600、8N1。动作命令均为单次发送；正数收线，负数放线，位置单位为0.01rad。",
+    "hex_on": false,
+    "loop_on": false,
+    "loop_ms": 500,
+    "loop_count": 1,
+    "cmd_hex": "",
+    "is_group": true,
+    "down": true,
+    "subCmds": [
+      {
+        "name": "1 工作模式选择",
+        "intro_on": true,
+        "intro": "只选择参与运动的触手及其关系，不会立即驱动电机。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"查询当前工作组","intro_on":true,"intro":"查看当前SOLO、DUAL或QUAD工作组、触手掩码和镜像状态。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 3F 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"单触手1","intro_on":true,"intro":"选择触手1；同时将TSEL同步为1。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 53 4F 4C 4F 20 31 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"单触手2","intro_on":true,"intro":"选择触手2；同时将TSEL同步为2。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 53 4F 4C 4F 20 32 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"单触手3","intro_on":true,"intro":"选择触手3；同时将TSEL同步为3。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 53 4F 4C 4F 20 33 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"单触手4","intro_on":true,"intro":"选择触手4；同时将TSEL同步为4。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 53 4F 4C 4F 20 34 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"双触手12同向","intro_on":true,"intro":"触手1、2使用相同的三路收放线目标。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 44 55 41 4C 20 31 32 20 53 41 4D 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"双触手12镜像","intro_on":true,"intro":"触手2交换M1和M3，触手1保持原目标。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 44 55 41 4C 20 31 32 20 4D 49 52 52 4F 52 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"双触手34同向","intro_on":true,"intro":"触手3、4使用相同的三路收放线目标。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 44 55 41 4C 20 33 34 20 53 41 4D 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"双触手34镜像","intro_on":true,"intro":"触手4交换M1和M3，触手3保持原目标。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 44 55 41 4C 20 33 34 20 4D 49 52 52 4F 52 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"四触手同向","intro_on":true,"intro":"四个触手使用相同的三路收放线目标。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 51 55 41 44 20 53 41 4D 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"四触手中心对称","intro_on":true,"intro":"触手1、3保持原目标；触手2、4交换M1和M3。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 57 4F 52 4B 20 51 55 41 44 20 43 45 4E 54 45 52 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      },
+      {
+        "name": "2 触手选择与状态",
+        "intro_on": true,
+        "intro": "TSEL选择单触手校准、W25和状态查询对象；在双/四触手模式下不会改变当前工作组。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"选择触手1","intro_on":true,"intro":"后续CANSTAT、CANZERO、CANABS和W25操作指向触手1。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"54 53 45 4C 20 31 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"选择触手2","intro_on":true,"intro":"后续CANSTAT、CANZERO、CANABS和W25操作指向触手2。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"54 53 45 4C 20 32 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"选择触手3","intro_on":true,"intro":"后续CANSTAT、CANZERO、CANABS和W25操作指向触手3。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"54 53 45 4C 20 33 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"选择触手4","intro_on":true,"intro":"后续CANSTAT、CANZERO、CANABS和W25操作指向触手4。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"54 53 45 4C 20 34 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"简要触手状态","intro_on":true,"intro":"查看TSEL触手的在线、RESTORE、堵转和线坐标位置。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"54 53 54 41 54 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"详细CAN状态","intro_on":true,"intro":"查看TSEL触手对应G4的收发计数、错误、序号和三路实际位置。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 53 54 41 54 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      },
+      {
+        "name": "3 运动与零点",
+        "intro_on": true,
+        "intro": "CANSTOP、CANHOME和CANPOS作用于当前MWORK工作组；CANZERO和CANABS只作用于TSEL触手。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"停止当前工作组","intro_on":true,"intro":"SOLO停止一个触手，DUAL停止一组，QUAD停止四个触手；同时清除映射使能。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 53 54 4F 50 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"当前工作组回HOME","intro_on":true,"intro":"当前工作组中的每个触手回到各自保存的HOME。必须先完成RESTORE。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 48 4F 4D 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"设置TSEL当前位置为零点","intro_on":true,"intro":"危险操作：仅将TSEL触手当前姿态定义为新HOME=0和ACTUAL=0，并写入W25。必须先停止电机。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 5A 45 52 4F 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"相对位置参数模板","intro_on":true,"intro":"请在VOFA中修改三个数值后发送。作用于当前MWORK工作组，单位0.01rad，正收线负放线。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 50 4F 53 20 30 20 30 20 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"中心关系小幅测试","intro_on":true,"intro":"相对目标[50,0,-50]，即[0.5rad,0,-0.5rad]；建议空载或松绳低风险验证。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 50 4F 53 20 35 30 20 30 20 2D 35 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"TSEL绝对HOME偏移模板","intro_on":true,"intro":"仅控制TSEL触手，目标为该触手HOME加三个偏移量，不按MWORK工作组分发。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"43 41 4E 41 42 53 20 30 20 30 20 30 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      },
+      {
+        "name": "4 映射控制",
+        "intro_on": true,
+        "intro": "映射目标按当前MWORK工作组和SAME/MIRROR/CENTER关系分发。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"映射控制开关","intro_on":true,"intro":"反转映射控制使能。开启前要求当前工作组全部完成RESTORE；再次发送则关闭。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 43 54 52 4C 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"虚拟映射输入模板","intro_on":true,"intro":"参数依次为x、y、bend、stiff，范围通常为-100~100和0~100。请修改后单次发送。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 56 49 52 54 20 30 20 30 20 30 20 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"查看映射状态","intro_on":true,"intro":"查看当前输入、弯曲、刚度、速度、HOME、拉线目标、发送状态和工作模式。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 53 54 41 54 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"查看映射配置","intro_on":true,"intro":"读取bend、stiff、deadband、方向满量程和速度上下限；不修改W25。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 43 46 47 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      },
+      {
+        "name": "5 W25Q64",
+        "intro_on": true,
+        "intro": "W25位置记录均按TSEL触手独立保存和读取。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"读取W25芯片ID","intro_on":true,"intro":"只读取JEDEC ID，不写Flash。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"57 32 35 49 44 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"W25基础读写测试","intro_on":true,"intro":"调试操作：会在预留测试地址执行写入和校验，不用于日常控制。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"57 32 35 54 45 53 54 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"保存TSEL当前ACTUAL","intro_on":true,"intro":"将TSEL触手最新可信ACTUAL写入W25；要求CAN状态新鲜且RESTORE有效。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"57 32 35 53 41 56 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"读取并装载TSEL记录","intro_on":true,"intro":"读取TSEL触手最新HOME和ACTUAL，同时装载到H7控制状态；不是单纯查看命令。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"57 32 35 4C 4F 41 44 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      },
+      {
+        "name": "6 VL53与AI",
+        "intro_on": true,
+        "intro": "VLSTAT用于查看测距和推理链路；VLSCAN会阻塞扫描I2C地址，仅故障排查时使用。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"查看VL53推理状态","intro_on":true,"intro":"查看初始化、模式、帧计数、帧龄、AI状态和输出分数。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"56 4C 53 54 41 54 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"扫描I2C2设备","intro_on":true,"intro":"故障排查命令：逐地址阻塞扫描I2C2，正常运行时不要频繁使用。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"56 4C 53 43 41 4E 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      },
+      {
+        "name": "7 数据采样",
+        "intro_on": true,
+        "intro": "采样操作与电机工作模式相互独立。MODE在推理和采样模式间切换。",
+        "hex_on": false,
+        "loop_on": false,
+        "loop_ms": 500,
+        "loop_count": 1,
+        "cmd_hex": "",
+        "is_group": true,
+        "down": true,
+        "subCmds": [
+          {"name":"切换推理或采样模式","intro_on":true,"intro":"反转当前VL53模式；默认通常为推理模式。采样前切换到采样模式。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4D 4F 44 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"单次采样","intro_on":true,"intro":"停止连续采样状态后采集并保存一帧。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"53 41 4D 50 4C 45 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"普通连续采样参数","intro_on":true,"intro":"设置采样20条、间隔500ms；修改参数后发送即可切换为普通采样配置。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"53 45 54 52 45 43 20 32 30 20 35 30 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"均衡采样参数","intro_on":true,"intro":"距离180~420mm、步长20mm、每档20条、间隔800ms；发送后使用REC开始。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"42 41 4C 43 46 47 20 31 38 30 20 34 32 30 20 32 30 20 32 30 20 38 30 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"连续采样开关","intro_on":true,"intro":"开始当前普通或均衡连续采样；再次发送可停止。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"52 45 43 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"强制停止采样","intro_on":true,"intro":"停止单次或连续采样并恢复推理模式。注意这不是电机CANSTOP。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"53 54 4F 50 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"查看采样状态","intro_on":true,"intro":"查看模式、采样等待、剩余数量、标签和错误状态。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"53 54 41 54 55 53 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"清除采样错误","intro_on":true,"intro":"清除VOFA采样错误标志和错误灯，不清除G4电机堵转。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"45 52 52 43 4C 52 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"标签0 完全握拳","intro_on":true,"intro":"设置后续采样标签为0。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4C 41 42 45 4C 20 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"标签25","intro_on":true,"intro":"设置后续采样标签为25。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4C 41 42 45 4C 20 32 35 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"标签50","intro_on":true,"intro":"设置后续采样标签为50。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4C 41 42 45 4C 20 35 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"标签75","intro_on":true,"intro":"设置后续采样标签为75。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4C 41 42 45 4C 20 37 35 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"标签100 完全张开","intro_on":true,"intro":"设置后续采样标签为100。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4C 41 42 45 4C 20 31 30 30 0D 0A","is_group":false,"down":false,"subCmds":[]},
+          {"name":"标签255 无手","intro_on":true,"intro":"设置后续采样标签为255，表示检测区域没有手。","hex_on":false,"loop_on":false,"loop_ms":500,"loop_count":1,"cmd_hex":"4C 41 42 45 4C 20 32 35 35 0D 0A","is_group":false,"down":false,"subCmds":[]}
+        ]
+      }
+    ]
+  }
+}

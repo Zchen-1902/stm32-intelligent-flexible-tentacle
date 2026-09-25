@@ -1,0 +1,257 @@
+ST Edge AI Core v2.2.0-20266 2adc00962
+Created date          : 2026-08-11 22:45:53
+Parameters            : generate --target stm32h7 --name gesture_openness -m D:/STM32Cube_project/4.8/H743VIT6_ACT/Training/exported_cnn_total_plus_edge_weighted/gesture_openness_cnn.onnx --compression none --verbosity 1 --workspace C:/Users/89511/AppData/Local/Temp/mxAI_workspace50782576500005901817322479730623 --output C:/Users/89511/.stm32cubemx/gesture_openness_output
+
+Exec/report summary (generate)
+----------------------------------------------------------------------------------------------------------------------------------------
+model file         :   D:\STM32Cube_project\4.8\H743VIT6_ACT\Training\exported_cnn_total_plus_edge_weighted\gesture_openness_cnn.onnx   
+type               :   onnx                                                                                                             
+c_name             :   gesture_openness                                                                                                 
+compression        :   none                                                                                                             
+options            :   allocate-inputs, allocate-outputs                                                                                
+optimization       :   balanced                                                                                                         
+target/series      :   stm32h7                                                                                                          
+workspace dir      :   C:\Users\89511\AppData\Local\Temp\mxAI_workspace50782576500005901817322479730623                                 
+output dir         :   C:\Users\89511\.stm32cubemx\gesture_openness_output                                                              
+model_fmt          :   float                                                                                                            
+model_name         :   gesture_openness_cnn                                                                                             
+model_hash         :   0x97b83df2c4de2117a9771dc7a7a6ad38                                                                               
+params #           :   21,353 items (83.41 KiB)                                                                                         
+----------------------------------------------------------------------------------------------------------------------------------------
+input 1/1          :   'features', f32(1x20x8x8), 5.00 KBytes, activations                                                              
+output 1/1         :   'openness_norm', f32(1x1), 4 Bytes, activations                                                                  
+macc               :   1,317,931                                                                                                        
+weights (ro)       :   85,412 B (83.41 KiB) (1 segment)                                                                                 
+activations (rw)   :   13,312 B (13.00 KiB) (1 segment) *                                                                               
+ram (total)        :   13,312 B (13.00 KiB) = 13,312 + 0 + 0                                                                            
+----------------------------------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers are allocated in the activations buffer
+
+Model name - gesture_openness_cnn
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+m_id   layer (type,original)                                      oshape               param/size          macc                     connected to   | c_size         c_macc          c_type                           
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+9      net_8_weight (Placeholder, Gemm)                           [b:24,c:32]          768/3,072                                                   | +96(+3.1%)     +792(+100.0%)   Dense_[8]                        
+       net_8_bias (Placeholder, Gemm)                             [b:24]               24/96                                                       | -96(-100.0%)                   
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+11     net_10_weight (Placeholder, Gemm)                          [b:1,c:24]           24/96                                                       | +4(+4.2%)      +25(+100.0%)    Dense_[10]                       
+       net_10_bias (Placeholder, Gemm)                            [b:1]                1/4                                                         | -4(-100.0%)                    
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+0      features (Input, )                                         [b:1,h:8,w:8,c:20]                                                               |                                
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+1      _net_net_0_Conv_output_0 (Conv2D, Conv)                    [b:1,h:8,w:8,c:24]   4,344/17,376     276,504                         features   |                                Conv2D_[1]                       
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+2      _net_net_1_Relu_output_0 (Nonlinearity, Relu)              [b:1,h:8,w:8,c:24]                      1,536         _net_net_0_Conv_output_0   |                +640(+41.7%)    Transpose_/Nonlinearity_[0, 2]   
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+3      _net_net_2_Conv_output_0 (Conv2D, Conv)                    [b:1,h:8,w:8,c:32]   6,944/27,776     442,400         _net_net_1_Relu_output_0   |                                Conv2D_[3]                       
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+4      _net_net_3_Relu_output_0 (Nonlinearity, Relu)              [b:1,h:8,w:8,c:32]                      2,048         _net_net_2_Conv_output_0   |                                Nonlinearity_[4]                 
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+5      _net_net_4_Conv_output_0 (Conv2D, Conv)                    [b:1,h:8,w:8,c:32]   9,248/36,992     589,856         _net_net_3_Relu_output_0   |                                Conv2D_[5]                       
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+6      _net_net_5_Relu_output_0 (Nonlinearity, Relu)              [b:1,h:8,w:8,c:32]                      2,048         _net_net_4_Conv_output_0   |                                Nonlinearity_[6]                 
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+7      _net_net_6_GlobalA..l_output_0 (Pool, GlobalAveragePool)   [b:1,h:1,w:1,c:32]                      2,048         _net_net_5_Relu_output_0   |                                Pool_[7]                         
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+8      _net_net_7_Flatten_output_0 (Reshape, Flatten)             [b:1,c:32]                                      _net_net_6_GlobalA..l_output_0   |                                
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+9      _net_net_8_Gemm_output_0 (Gemm, Gemm)                      [b:1,c:24]                                792      _net_net_7_Flatten_output_0   |                -792(-100.0%)   
+                                                                                                                                    net_8_weight   | 
+                                                                                                                                      net_8_bias   | 
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+10     _net_net_9_Relu_output_0 (Nonlinearity, Relu)              [b:1,c:24]                                 24         _net_net_8_Gemm_output_0   |                                Nonlinearity_[9]                 
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+11     _net_net_10_Gemm_output_0 (Gemm, Gemm)                     [b:1,c:1]                                  25         _net_net_9_Relu_output_0   |                -25(-100.0%)    
+                                                                                                                                   net_10_weight   | 
+                                                                                                                                     net_10_bias   | 
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+12     openness_norm (Nonlinearity, Sigmoid)                      [b:1,c:1]                                  10        _net_net_10_Gemm_output_0   |                                Nonlinearity_[o][11]             
+------ ---------------------------------------------------------- -------------------- -------------- --------- -------------------------------- --- -------------- --------------- -------------------------------- 
+model/c-model: macc=1,317,291/1,317,931 +640(+0.0%) weights=85,412/85,412  activations=--/13,312 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : gesture_openness_cnn
+c-name                : gesture_openness
+c-node #              : 12
+c-array #             : 26
+activations size      : 13312 (1 segment)
+weights size          : 85412 (1 segment)
+macc                  : 1317931
+inputs                : ['features_output']
+outputs               : ['openness_norm_output']
+
+C-Arrays (26)
+------ ---------------------------------------------- ------------ ------------------------- ------------- --------- 
+c_id   name (*_array)                                 item/size    domain/mem-pool           c-type        comment   
+------ ---------------------------------------------- ------------ ------------------------- ------------- --------- 
+0      _net_net_0_Conv_output_0_bias                  24/96        weights/weights           const float             
+1      _net_net_0_Conv_output_0_output                1536/6144    activations/**default**   float                   
+2      _net_net_0_Conv_output_0_scratch0              180/720      activations/**default**   float                   
+3      _net_net_0_Conv_output_0_weights               4320/17280   weights/weights           const float             
+4      _net_net_10_Gemm_output_0_bias                 1/4          weights/weights           const float             
+5      _net_net_10_Gemm_output_0_output               1/4          activations/**default**   float                   
+6      _net_net_10_Gemm_output_0_weights              24/96        weights/weights           const float             
+7      _net_net_1_Relu_output_0_output                1536/6144    activations/**default**   float                   
+8      _net_net_2_Conv_output_0_bias                  32/128       weights/weights           const float             
+9      _net_net_2_Conv_output_0_output                2048/8192    activations/**default**   float                   
+10     _net_net_2_Conv_output_0_scratch0              216/864      activations/**default**   float                   
+11     _net_net_2_Conv_output_0_weights               6912/27648   weights/weights           const float             
+12     _net_net_3_Relu_output_0_output                2048/8192    activations/**default**   float                   
+13     _net_net_4_Conv_output_0_bias                  32/128       weights/weights           const float             
+14     _net_net_4_Conv_output_0_output                2048/8192    activations/**default**   float                   
+15     _net_net_4_Conv_output_0_scratch0              288/1152     activations/**default**   float                   
+16     _net_net_4_Conv_output_0_weights               9216/36864   weights/weights           const float             
+17     _net_net_5_Relu_output_0_output                2048/8192    activations/**default**   float                   
+18     _net_net_6_GlobalAveragePool_output_0_output   32/128       activations/**default**   float                   
+19     _net_net_8_Gemm_output_0_bias                  24/96        weights/weights           const float             
+20     _net_net_8_Gemm_output_0_output                24/96        activations/**default**   float                   
+21     _net_net_8_Gemm_output_0_weights               768/3072     weights/weights           const float             
+22     _net_net_9_Relu_output_0_output                24/96        activations/**default**   float                   
+23     features_Transpose_output                      1280/5120    activations/**default**   float                   
+24     features_output                                1280/5120    activations/**default**   float         /input    
+25     openness_norm_output                           1/4          activations/**default**   float         /output   
+------ ---------------------------------------------- ------------ ------------------------- ------------- --------- 
+
+C-Layers (12)
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+c_id   name (*_layer)                          id   layer_type      macc     rom     tensors                                           shape (array id)      
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+0      features_Transpose                      2    Transpose       640      0       I: features_output                                f32(1x20x8x8) (24)    
+                                                                                     O: features_Transpose_output                      f32(1x8x8x20) (23)    
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+1      _net_net_0_Conv_output_0                1    Conv2D          276504   17376   I: features_Transpose_output                      f32(1x8x8x20) (23)    
+                                                                                     S: _net_net_0_Conv_output_0_scratch0                                    
+                                                                                     W: _net_net_0_Conv_output_0_weights               f32(24x3x3x20) (3)    
+                                                                                     W: _net_net_0_Conv_output_0_bias                  f32(24) (0)           
+                                                                                     O: _net_net_0_Conv_output_0_output                f32(1x8x8x24) (1)     
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+2      _net_net_1_Relu_output_0                2    Nonlinearity    1536     0       I: _net_net_0_Conv_output_0_output                f32(1x8x8x24) (1)     
+                                                                                     O: _net_net_1_Relu_output_0_output                f32(1x8x8x24) (7)     
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+3      _net_net_2_Conv_output_0                3    Conv2D          442400   27776   I: _net_net_1_Relu_output_0_output                f32(1x8x8x24) (7)     
+                                                                                     S: _net_net_2_Conv_output_0_scratch0                                    
+                                                                                     W: _net_net_2_Conv_output_0_weights               f32(32x3x3x24) (11)   
+                                                                                     W: _net_net_2_Conv_output_0_bias                  f32(32) (8)           
+                                                                                     O: _net_net_2_Conv_output_0_output                f32(1x8x8x32) (9)     
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+4      _net_net_3_Relu_output_0                4    Nonlinearity    2048     0       I: _net_net_2_Conv_output_0_output                f32(1x8x8x32) (9)     
+                                                                                     O: _net_net_3_Relu_output_0_output                f32(1x8x8x32) (12)    
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+5      _net_net_4_Conv_output_0                5    Conv2D          589856   36992   I: _net_net_3_Relu_output_0_output                f32(1x8x8x32) (12)    
+                                                                                     S: _net_net_4_Conv_output_0_scratch0                                    
+                                                                                     W: _net_net_4_Conv_output_0_weights               f32(32x3x3x32) (16)   
+                                                                                     W: _net_net_4_Conv_output_0_bias                  f32(32) (13)          
+                                                                                     O: _net_net_4_Conv_output_0_output                f32(1x8x8x32) (14)    
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+6      _net_net_5_Relu_output_0                6    Nonlinearity    2048     0       I: _net_net_4_Conv_output_0_output                f32(1x8x8x32) (14)    
+                                                                                     O: _net_net_5_Relu_output_0_output                f32(1x8x8x32) (17)    
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+7      _net_net_6_GlobalAveragePool_output_0   7    Pool            2048     0       I: _net_net_5_Relu_output_0_output                f32(1x8x8x32) (17)    
+                                                                                     O: _net_net_6_GlobalAveragePool_output_0_output   f32(1x1x1x32) (18)    
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+8      _net_net_8_Gemm_output_0                9    Dense           792      3168    I: _net_net_6_GlobalAveragePool_output_0_output   f32(1x1x1x32) (18)    
+                                                                                     W: _net_net_8_Gemm_output_0_weights               f32(24x32) (21)       
+                                                                                     W: _net_net_8_Gemm_output_0_bias                  f32(24) (19)          
+                                                                                     O: _net_net_8_Gemm_output_0_output                f32(1x24) (20)        
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+9      _net_net_9_Relu_output_0                10   Nonlinearity    24       0       I: _net_net_8_Gemm_output_0_output                f32(1x24) (20)        
+                                                                                     O: _net_net_9_Relu_output_0_output                f32(1x24) (22)        
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+10     _net_net_10_Gemm_output_0               11   Dense           25       100     I: _net_net_9_Relu_output_0_output                f32(1x24) (22)        
+                                                                                     W: _net_net_10_Gemm_output_0_weights              f32(1x24) (6)         
+                                                                                     W: _net_net_10_Gemm_output_0_bias                 f32(1) (4)            
+                                                                                     O: _net_net_10_Gemm_output_0_output               f32(1x1) (5)          
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+11     openness_norm                           12   Nonlinearity    10       0       I: _net_net_10_Gemm_output_0_output               f32(1x1) (5)          
+                                                                                     O: openness_norm_output                           f32(1x1) (25)         
+------ --------------------------------------- ---- --------------- -------- ------- ------------------------------------------------- --------------------- 
+
+
+
+Number of operations per c-layer
+------- ------ ----------------------------------------- ----------- -------------- 
+c_id    m_id   name (type)                                       #op           type 
+------- ------ ----------------------------------------- ----------- -------------- 
+0       2      features_Transpose (Transpose)                    640   smul_f32_f32 
+1       1      _net_net_0_Conv_output_0 (Conv2D)             276,504   smul_f32_f32 
+2       2      _net_net_1_Relu_output_0 (Nonlinearity)         1,536     op_f32_f32 
+3       3      _net_net_2_Conv_output_0 (Conv2D)             442,400   smul_f32_f32 
+4       4      _net_net_3_Relu_output_0 (Nonlinearity)         2,048     op_f32_f32 
+5       5      _net_net_4_Conv_output_0 (Conv2D)             589,856   smul_f32_f32 
+6       6      _net_net_5_Relu_output_0 (Nonlinearity)         2,048     op_f32_f32 
+7       7      _net_net_6_GlobalA..l_output_0 (Pool)           2,048   smul_f32_f32 
+8       9      _net_net_8_Gemm_output_0 (Dense)                  792   smul_f32_f32 
+9       10     _net_net_9_Relu_output_0 (Nonlinearity)            24     op_f32_f32 
+10      11     _net_net_10_Gemm_output_0 (Dense)                  25   smul_f32_f32 
+11      12     openness_norm (Nonlinearity)                       10     op_f32_f32 
+------- ------ ----------------------------------------- ----------- -------------- 
+total                                                      1,317,931 
+
+Number of operation types
+---------------- ----------- ----------- 
+operation type             #           % 
+---------------- ----------- ----------- 
+smul_f32_f32       1,312,265       99.6% 
+op_f32_f32             5,666        0.4% 
+
+Complexity report (model)
+------ --------------------------------------- ------------------------- ------------------------- -------- 
+m_id   name                                    c_macc                    c_rom                     c_id     
+------ --------------------------------------- ------------------------- ------------------------- -------- 
+9      net_8_weight                            |                  0.1%   ||                 3.7%   [8]      
+11     net_10_weight                           |                  0.0%   |                  0.1%   [10]     
+1      _net_net_0_Conv_output_0                ||||||||          21.0%   ||||||||          20.3%   [1]      
+2      _net_net_1_Relu_output_0                |                  0.2%   |                  0.0%   [0, 2]   
+3      _net_net_2_Conv_output_0                ||||||||||||      33.6%   ||||||||||||      32.5%   [3]      
+4      _net_net_3_Relu_output_0                |                  0.2%   |                  0.0%   [4]      
+5      _net_net_4_Conv_output_0                ||||||||||||||||  44.8%   ||||||||||||||||  43.3%   [5]      
+6      _net_net_5_Relu_output_0                |                  0.2%   |                  0.0%   [6]      
+7      _net_net_6_GlobalAveragePool_output_0   |                  0.2%   |                  0.0%   [7]      
+10     _net_net_9_Relu_output_0                |                  0.0%   |                  0.0%   [9]      
+12     openness_norm                           |                  0.0%   |                  0.0%   [11]     
+------ --------------------------------------- ------------------------- ------------------------- -------- 
+macc=1,317,931 weights=85,412 act=13,312 ram_io=0
+ 
+ Requested memory size by section - "stm32h7" target
+ ------------------------------ -------- -------- ------- -------- 
+ module                             text   rodata    data      bss 
+ ------------------------------ -------- -------- ------- -------- 
+ NetworkRuntime1020_CM7_GCC.a     10,420        0       0        0 
+ gesture_openness.o                  756       96   3,528      192 
+ gesture_openness_data.o              48       16      88        0 
+ lib (toolchain)*                    324      328       0        0 
+ ------------------------------ -------- -------- ------- -------- 
+ RT total**                       11,548      440   3,616      192 
+ ------------------------------ -------- -------- ------- -------- 
+ weights                               0   85,416       0        0 
+ activations                           0        0       0   13,312 
+ io                                    0        0       0        0 
+ ------------------------------ -------- -------- ------- -------- 
+ TOTAL                            11,548   85,856   3,616   13,504 
+ ------------------------------ -------- -------- ------- -------- 
+ *  toolchain objects (libm/libgcc*)
+ ** RT AI runtime objects (kernels+infrastructure)
+  
+  Summary - "stm32h7" target
+  ---------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)       % 
+  ---------------------------------------------------
+  RT total         15,604   15.4%      3,808   22.2% 
+  ---------------------------------------------------
+  TOTAL           101,020             17,120         
+  ---------------------------------------------------
+  *  rt/total
+
+
+Generated files (7)
+------------------------------------------------------------------------------------ 
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness_data_params.h   
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness_data_params.c   
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness_data.h          
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness_data.c          
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness_config.h        
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness.h               
+C:\Users\89511\.stm32cubemx\gesture_openness_output\gesture_openness.c               
