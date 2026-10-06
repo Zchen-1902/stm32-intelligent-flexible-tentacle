@@ -1,0 +1,5 @@
+*.eprj2 binary
+*.onnx binary
+*.lib binary
+*.pdf binary
+*.stl binary

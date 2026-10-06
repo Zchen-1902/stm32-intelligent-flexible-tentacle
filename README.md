@@ -15,6 +15,7 @@ training/
   gesture-cnn/           手势识别 CNN 训练代码
   act-tcn/               ACT/TCN 策略训练与 ONNX 导出代码
 models/                  最终部署模型
+hardware/                嘉立创 EDA 专业版 PCB 工程
 docs/                    项目文档
 ```
 
@@ -42,6 +43,19 @@ docs/                    项目文档
 ### 上位机与训练代码
 
 各 Python 子工程中的 `README.md`、`requirements.txt` 和入口脚本给出了对应的运行方式。训练数据、编译中间文件和本地缓存未纳入仓库。
+
+### PCB 硬件设计
+
+- 总览：[`hardware/README.md`](hardware/README.md)
+- H7 主控板：`hardware/H7主控板/h743vit6.eprj2`
+- 编码器板与 SPI 转接板：`hardware/编码器板与SPI转接板/编码器.eprj2`
+- 三电机驱动板与电源板：`hardware/驱动板与电源板/FOC无刷驱动板.eprj2`
+
+上述文件使用嘉立创 EDA 专业版打开。生产前需要重新执行原理图检查、PCB DRC，并核对层叠、器件封装、电源额定值和当前物料可用性。
+
+### 开发日志
+
+- [`docs/PROJECT_ENGINEERING_LOG.md`](docs/PROJECT_ENGINEERING_LOG.md)：从工程初始化、FOC 调试到 ACT 模型部署和 GitHub 发布的完整开发记录。
 
 ## 模型
 

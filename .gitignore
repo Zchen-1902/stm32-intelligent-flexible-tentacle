@@ -59,3 +59,7 @@ desktop.ini
 *.7z
 *.rar
 hs_err_pid*.log
+
+# EasyEDA Pro local history and backup exports
+*_backup/
+*.epro2
